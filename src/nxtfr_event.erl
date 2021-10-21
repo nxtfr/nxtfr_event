@@ -27,7 +27,6 @@ notify(Event) ->
     gen_event:notify(nxtfr_event, Event).
 
 notify_global(EventManager, Event) ->
-    global:whereis_name(EventManager) =/= undefined orelse throw(no_event_manager),
     gen_event:notify({global, EventManager}, Event).
 
 delete_handler(Handler) ->
