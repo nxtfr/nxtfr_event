@@ -30,8 +30,8 @@ notify_global(EventManager, Event) ->
     gen_event:notify({global, EventManager}, Event).
 
 delete_handler(Handler) ->
-    gen_event:delete_handler(nxtfr_event, Handler).
+    gen_event:delete_handler(nxtfr_event, Handler, []).
 
 delete_global_handler(EventManager, Handler) ->
     global:whereis_name(EventManager) =/= undefined orelse throw(no_event_manager),
-    gen_event:delete_handler({global, EventManager}, Handler).
+    gen_event:delete_handler({global, EventManager}, Handler, []).
